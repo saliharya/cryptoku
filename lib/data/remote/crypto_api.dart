@@ -2,9 +2,11 @@ import 'dart:convert';
 
 import 'package:cryptoku/data/remote/api_config.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
 import '../model/crypto_response.dart';
 
+@lazySingleton
 class CryptoApi {
   Future<CryptoResponse> getTotalTopTierVolFull() async {
     final dio = Dio(ApiConfig.dioBaseOption);

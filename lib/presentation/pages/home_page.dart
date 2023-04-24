@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cryptoku/injection.dart';
 import 'package:cryptoku/presentation/cubit/total_top_tier_vol_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +12,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => TotalTopTierVolCubit(),
+      create: (context) => getIt<TotalTopTierVolCubit>(),
       child: Scaffold(
         appBar: AppBar(
           title: Text(title),
@@ -56,7 +57,7 @@ class MyHomePage extends StatelessWidget {
                           child: Row(
                             children: [
                               CachedNetworkImage(
-                                imageUrl: data.coinInfo?.imageUrl ?? "",
+                                imageUrl: data.coinInfo?.fullImageUrl ?? "",
                                 width: 40,
                                 height: 40,
                               ),

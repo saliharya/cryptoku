@@ -1,7 +1,11 @@
 import 'package:cryptoku/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
+import 'injection.dart';
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  getDependencies();
   runApp(const MyApp());
 }
 

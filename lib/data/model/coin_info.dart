@@ -11,11 +11,11 @@ class CoinInfo {
   @JsonKey(name: "FullName")
   String? fullName;
   @JsonKey(name: "ImageUrl")
-  String? _imageUrl;
-  String get imageUrl =>
-      "https://www.cryptocompare.com/media${_imageUrl ?? ""}";
+  String? imageUrl;
+  String get fullImageUrl =>
+      "https://www.cryptocompare.com/media${imageUrl ?? ""}";
 
-  CoinInfo(this.id, this.name, this.fullName, this._imageUrl);
+  CoinInfo(this.id, this.name, this.fullName, this.imageUrl);
 
   factory CoinInfo.fromJson(Map<String, dynamic> json) =>
       _$CoinInfoFromJson(json);
