@@ -1,16 +1,33 @@
-# cryptoku
+## CryptoKu
+CryptoKu is a Flutter app that displays the top cryptocurrency prices in USD. It uses the CryptoCompare API to fetch the data.
 
-A new Flutter project.
+## Author
+Arya Gumilang (saliharyazinc@gmail.com)
 
-## Getting Started
+## API
+The base URL used for fetching data is: https://min-api.cryptocompare.com/data
 
-This project is a starting point for a Flutter application.
+## Dependencies
+cupertino_icons: ^1.0.2
+dio: ^5.1.1
+flutter_bloc: ^8.1.2
+get_it: ^7.2.0
+injectable: ^2.1.1
+json_annotation: ^4.8.0
+freezed_annotation: ^2.2.0
+cached_network_image: ^3.2.3
+flutter_test: sdk: flutter
+flutter_lints: ^2.0.0
+build_runner: ^2.3.3
+injectable_generator: ^2.1.5
+json_serializable: ^6.6.1
+freezed: ^2.3.2
 
-A few resources to get you started if this is your first Flutter project:
+## Getting started
+To run the app, you can use the flutter run command in the terminal. To generate code for the annotations, use the `flutter pub run build_runner build` command.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+
+
