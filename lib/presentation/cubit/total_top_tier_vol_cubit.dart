@@ -12,22 +12,31 @@ part 'total_top_tier_vol_state.dart';
 
 @injectable
 class TotalTopTierVolCubit extends Cubit<TotalTopTierVolState> {
-  TotalTopTierVolCubit() : super(const TotalTopTierVolState.loading()) {
-    getTotalTopTierVolFull();
-  }
+  TotalTopTierVolCubit() : super(const TotalTopTierVolState.loading());
+
+  var currentPage = 0;
+  var totalPage = 0;
+  var list = <CryptoData>[];
 
   void getTotalTopTierVolFull() async {
-    emit(const TotalTopTierVolState.loading());
+    if (!allowFetchNext()) return;
+    if (list.isEmpty) emit(const TotalTopTierVolState.loading());
     try {
-      final response = await getIt<CryptoRepository>().getTotalTopTierVolFull();
+      final response =
+          await getIt<CryptoRepository>().getTotalTopTierVolFull(currentPage);
+      totalPage = response.metaData?.count ?? 0;
       final list = response.data ?? [];
       if (list.isEmpty) {
         emit(const TotalTopTierVolState.noData());
       } else {
+        this.list.addAll(list);
         emit(TotalTopTierVolState.success(list));
+        currentPage++;
       }
     } on DioError catch (e) {
       emit(TotalTopTierVolState.error(e));
     }
   }
+
+  bool allowFetchNext() => list.isEmpty || totalPage > list.length;
 }

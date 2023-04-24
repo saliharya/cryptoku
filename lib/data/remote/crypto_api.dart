@@ -8,12 +8,13 @@ import '../model/crypto_response.dart';
 
 @lazySingleton
 class CryptoApi {
-  Future<CryptoResponse> getTotalTopTierVolFull() async {
+  Future<CryptoResponse> getTotalTopTierVolFull(int page) async {
     final dio = Dio(ApiConfig.dioBaseOption);
     final response = await dio.get(
       "/top/totaltoptiervolfull",
       queryParameters: {
-        "limit": 50,
+        "limit": 10,
+        "page": page,
         "tsym": "USD",
         "apiKey": ApiConfig.apiKey,
       },

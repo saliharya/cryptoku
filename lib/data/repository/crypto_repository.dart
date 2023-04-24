@@ -6,7 +6,7 @@ import '../model/crypto_response.dart';
 
 @lazySingleton
 class CryptoRepository {
-  Future<CryptoResponse> getTotalTopTierVolFull() async {
-    return getIt<CryptoApi>().getTotalTopTierVolFull();
+  Future<CryptoResponse> getTotalTopTierVolFull(int page) async {
+    return getIt<CryptoApi>().getTotalTopTierVolFull(page);
   }
 }
