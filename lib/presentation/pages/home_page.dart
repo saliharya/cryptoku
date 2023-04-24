@@ -1,4 +1,4 @@
-import 'package:cryptoku/data/model/crypto_data.dart';
+import 'package:cryptoku/domain/model/crypto_item.dart';
 import 'package:cryptoku/injection.dart';
 import 'package:cryptoku/presentation/cubit/total_top_tier_vol_cubit.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final PagingController<int, CryptoData> _pagingController =
+  final PagingController<int, CryptoItem> _pagingController =
       PagingController(firstPageKey: 0);
 
   @override
@@ -66,9 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 final nextPageKey = getIt<TotalTopTierVolCubit>().list.length;
                 _pagingController.appendPage(newItems, nextPageKey);
               }
-              return PagedListView<int, CryptoData>(
+              return PagedListView<int, CryptoItem>(
                 pagingController: _pagingController,
-                builderDelegate: PagedChildBuilderDelegate<CryptoData>(
+                builderDelegate: PagedChildBuilderDelegate<CryptoItem>(
                   itemBuilder: (context, item, index) => CryptoListItem(item),
                 ),
               );

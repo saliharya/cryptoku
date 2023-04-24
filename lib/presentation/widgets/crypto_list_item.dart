@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cryptoku/data/model/crypto_data.dart';
+import 'package:cryptoku/domain/model/crypto_item.dart';
 import 'package:flutter/material.dart';
 
 class CryptoListItem extends StatelessWidget {
-  final CryptoData data;
+  final CryptoItem data;
 
   const CryptoListItem(this.data, {Key? key}) : super(key: key);
 
@@ -25,7 +25,7 @@ class CryptoListItem extends StatelessWidget {
           child: Row(
             children: [
               CachedNetworkImage(
-                imageUrl: data.coinInfo?.fullImageUrl ?? "",
+                imageUrl: data.imageUrl,
                 width: 40,
                 height: 40,
               ),
@@ -34,14 +34,14 @@ class CryptoListItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(data.coinDisplay?.coinUsd?.symbol ?? ""),
-                    Text(data.coinInfo?.fullName ?? ""),
+                    Text(data.symbol),
+                    Text(data.fullName),
                   ],
                 ),
               ),
               const Spacer(),
               Text(
-                data.coinDisplay?.coinUsd?.price ?? "",
+                data.price,
                 style: const TextStyle(
                     color: Colors.green, fontWeight: FontWeight.w800),
               ),
