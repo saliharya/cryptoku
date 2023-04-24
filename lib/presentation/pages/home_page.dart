@@ -1,8 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cryptoku/injection.dart';
 import 'package:cryptoku/presentation/cubit/total_top_tier_vol_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../widgets/crypto_list_item.dart';
 
 class MyHomePage extends StatelessWidget {
   final String title;
@@ -39,52 +40,7 @@ class MyHomePage extends StatelessWidget {
                 return ListView.builder(
                   shrinkWrap: true,
                   itemCount: list.length,
-                  itemBuilder: (context, index) {
-                    final data = list[index];
-                    return Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.grey,
-                          ),
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(8),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Row(
-                            children: [
-                              CachedNetworkImage(
-                                imageUrl: data.coinInfo?.fullImageUrl ?? "",
-                                width: 40,
-                                height: 40,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(data.coinDisplay?.coinUsd?.symbol ??
-                                        ""),
-                                    Text(data.coinInfo?.fullName ?? ""),
-                                  ],
-                                ),
-                              ),
-                              const Spacer(),
-                              Text(
-                                data.coinDisplay?.coinUsd?.price ?? "",
-                                style: const TextStyle(
-                                    color: Colors.green,
-                                    fontWeight: FontWeight.w800),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
+                  itemBuilder: (_, index) => CryptoListItem(list[index]),
                 );
               },
             );
